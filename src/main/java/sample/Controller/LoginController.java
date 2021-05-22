@@ -33,15 +33,10 @@ public class LoginController {
     @FXML
     Button buttonRegistratiLgn;
 
-    @FXML
-    public void initialize(){
-        buttonLogin.setDefaultButton(true);
-    }
-
     public void buttonLoginClick(ActionEvent event){
         String username = tfUsernameLogin.getText();
         String password = tfPasswordLogin.getText();
-        Thread t = new Thread(){
+        new Thread(){
             public void run(){
                 UtenteDAO utenteDAO = new UtenteDAO();
                 boolean login = utenteDAO.loginAmministratore(username,password);
@@ -52,8 +47,7 @@ public class LoginController {
                     }
                 });
             }
-        };
-        t.start();
+        }.start();
     }
 
     public void buttonRegistratiLgnClick(ActionEvent event) {
@@ -83,7 +77,6 @@ public class LoginController {
             //impostare utente loggato in Utente!!
             labelErrorLogin.setText("DATI CORRETTI");
             labelErrorLogin.setTextFill(Color.GREEN);
-
         }
     }
 

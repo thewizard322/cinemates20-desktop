@@ -18,6 +18,27 @@ public class UtenteDAO {
 
     String url = "http://ec2-18-196-42-56.eu-central-1.compute.amazonaws.com";
 
+    public boolean registraAmministratore(String username, String pwd, String email){
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("username", username));
+        params.add(new BasicNameValuePair("password", pwd));
+        params.add(new BasicNameValuePair("email", email));
+        HttpClient client = new DefaultHttpClient();
+        HttpPost httpPost = new HttpPost(url+"/registrazioneAmministratore.php");
+        try {
+            httpPost.setEntity(new UrlEncodedFormEntity(params));
+            HttpResponse response = client.execute(httpPost);
+            String responseString = EntityUtils.toString(response.getEntity());
+            JSONObject jsonObject = new JSONObject(responseString);
+            int check = jsonObject.getInt("response");
+            if(check != 0)
+                return false;
+        } catch (Throwable e) {
+            return false;
+        }
+        return true;
+    }
+
     public boolean loginAmministratore(String username, String password){
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("username", username));
@@ -39,6 +60,56 @@ public class UtenteDAO {
                 return false;
         } catch (Throwable e) {
             System.out.println("IMPOSSIBILE LOGGARE UTENTE");
+            return false;
+        }
+        return true;
+    }
+
+    public boolean checkUser(String username){
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("username", username));
+        HttpClient client = new DefaultHttpClient();
+        HttpPost httpPost = new HttpPost(url+"/checkUser.php");
+        try {
+            httpPost.setEntity(new UrlEncodedFormEntity(params));
+            HttpResponse response = client.execute(httpPost);
+            String responseString = EntityUtils.toString(response.getEntity());
+            JSONArray jsonArray = new JSONArray(responseString);
+            int n = jsonArray.length();
+            int count = 0;
+            for (int i = 0; i < n; i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                count = jsonObject.getInt("count");
+            }
+            if(count!=0)
+                return false;
+        } catch (Throwable e) {
+            System.out.println("ERRORE NEL CHECK USERNAME");
+            return false;
+        }
+        return true;
+    }
+
+    public boolean checkEmail(String email){
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("email", email));
+        HttpClient client = new DefaultHttpClient();
+        HttpPost httpPost = new HttpPost(url+"/checkEmail.php");
+        try {
+            httpPost.setEntity(new UrlEncodedFormEntity(params));
+            HttpResponse response = client.execute(httpPost);
+            String responseString = EntityUtils.toString(response.getEntity());
+            JSONArray jsonArray = new JSONArray(responseString);
+            int n = jsonArray.length();
+            int count = 0;
+            for (int i = 0; i < n; i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                count = jsonObject.getInt("count");
+            }
+            if(count!=0)
+                return false;
+        } catch (Throwable e) {
+            System.out.println("ERRORE NEL CHECK DELLA MAIL");
             return false;
         }
         return true;
