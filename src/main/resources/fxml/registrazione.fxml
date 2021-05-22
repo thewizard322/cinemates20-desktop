@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.RegistrazioneController">
+    <center>
+        <AnchorPane prefHeight="300.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+            <children>
+                <TextField fx:id="tfUsernameLogin" layoutX="101.0" layoutY="67.0" prefHeight="26.0" prefWidth="200.0" promptText="Username" />
+                <PasswordField fx:id="tfPasswordLogin" layoutX="101.0" layoutY="104.0" prefHeight="26.0" prefWidth="200.0" promptText="Password" />
+                <Button fx:id="buttonIndietroReg" layoutX="14.0" layoutY="14.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#buttonIndietroRegClick" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: #E96151; -fx-text-fill: #000000;" text="INDIETRO" />
+                <Label fx:id="labelErrorLogin" alignment="CENTER" layoutX="85.0" layoutY="147.0" prefHeight="18.0" prefWidth="230.0" />
+            <TextField fx:id="tfUsernameLogin1" layoutX="101.0" layoutY="137.0" prefHeight="26.0" prefWidth="200.0" promptText="E-mal" />
+            <Button layoutX="138.0" layoutY="176.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: #E96151; -fx-text-fill: #000000;" text="REGISTRATI" />
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>

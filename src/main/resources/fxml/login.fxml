@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.LoginController">
+   <center>
+      <AnchorPane prefHeight="300.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="tfUsernameLogin" layoutX="101.0" layoutY="67.0" prefHeight="26.0" prefWidth="200.0" promptText="Username" />
+            <PasswordField fx:id="tfPasswordLogin" layoutX="101.0" layoutY="104.0" prefHeight="26.0" prefWidth="200.0" promptText="Password" />
+            <Button fx:id="buttonRegistratiLgn" layoutX="137.0" layoutY="219.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#buttonRegistratiLgnClick" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: #E96151; -fx-text-fill: #000000;" text="REGISTRATI" />
+            <Button fx:id="buttonLogin" layoutX="137.0" layoutY="179.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#buttonLoginClick" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: #E96151; -fx-text-fill: #000000;" text="LOGIN" />
+            <Label fx:id="labelErrorLogin" alignment="CENTER" layoutX="85.0" layoutY="147.0" prefHeight="18.0" prefWidth="230.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
