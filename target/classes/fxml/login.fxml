@@ -4,19 +4,28 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.LoginController">
-   <center>
+   <bottom>
       <AnchorPane prefHeight="300.0" prefWidth="400.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="tfUsernameLogin" layoutX="101.0" layoutY="67.0" prefHeight="26.0" prefWidth="200.0" promptText="Username" />
-            <PasswordField fx:id="tfPasswordLogin" layoutX="101.0" layoutY="104.0" prefHeight="26.0" prefWidth="200.0" promptText="Password" />
-            <Button fx:id="buttonRegistratiLgn" layoutX="137.0" layoutY="219.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#buttonRegistratiLgnClick" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: #E96151; -fx-text-fill: #000000;" text="REGISTRATI" />
-            <Button fx:id="buttonLogin" layoutX="137.0" layoutY="179.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#buttonLoginClick" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: #E96151; -fx-text-fill: #000000;" text="LOGIN" />
-            <Label fx:id="labelErrorLogin" alignment="CENTER" layoutX="85.0" layoutY="147.0" prefHeight="18.0" prefWidth="230.0" />
+            <Button fx:id="buttonRegistratiLgn" layoutX="137.0" layoutY="235.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#buttonRegistratiLgnClick" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: #E96151; -fx-text-fill: #000000;" text="REGISTRATI" />
+            <TextField fx:id="tfUsernameLogin" layoutX="134.0" layoutY="87.0" prefHeight="26.0" prefWidth="200.0" promptText="Username" />
+            <PasswordField fx:id="tfPasswordLogin" layoutX="134.0" layoutY="124.0" prefHeight="26.0" prefWidth="200.0" promptText="Password" />
+            <Button fx:id="buttonLogin" defaultButton="true" layoutX="137.0" layoutY="194.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#buttonLoginClick" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: #E96151; -fx-text-fill: #000000;" text="LOGIN" />
+            <Label fx:id="labelErrorLogin" alignment="CENTER" layoutX="85.0" layoutY="163.0" prefHeight="18.0" prefWidth="230.0" />
+            <ImageView fitHeight="52.0" fitWidth="330.0" layoutX="46.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="57.0" layoutY="91.0" text="Username" />
+            <Label layoutX="58.0" layoutY="128.0" text="Password" />
          </children>
       </AnchorPane>
-   </center>
+   </bottom>
 </BorderPane>

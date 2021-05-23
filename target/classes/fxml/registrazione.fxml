@@ -11,12 +11,15 @@
     <center>
         <AnchorPane prefHeight="300.0" prefWidth="400.0" BorderPane.alignment="CENTER">
             <children>
-                <TextField fx:id="tfUsernameLogin" layoutX="101.0" layoutY="67.0" prefHeight="26.0" prefWidth="200.0" promptText="Username" />
-                <PasswordField fx:id="tfPasswordLogin" layoutX="101.0" layoutY="104.0" prefHeight="26.0" prefWidth="200.0" promptText="Password" />
-                <Button fx:id="buttonIndietroReg" layoutX="14.0" layoutY="14.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#buttonIndietroRegClick" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: #E96151; -fx-text-fill: #000000;" text="INDIETRO" />
-                <Label fx:id="labelErrorLogin" alignment="CENTER" layoutX="85.0" layoutY="147.0" prefHeight="18.0" prefWidth="230.0" />
-            <TextField fx:id="tfUsernameLogin1" layoutX="101.0" layoutY="137.0" prefHeight="26.0" prefWidth="200.0" promptText="E-mal" />
-            <Button layoutX="138.0" layoutY="176.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: #E96151; -fx-text-fill: #000000;" text="REGISTRATI" />
+                <Button fx:id="buttonIndietroReg" layoutX="8.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#buttonIndietroRegClick" prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 100; -fx-background-color: CYAN;" />
+                <TextField fx:id="tfUsernameReg" layoutX="139.0" layoutY="67.0" prefHeight="26.0" prefWidth="200.0" promptText="Username" />
+                <PasswordField fx:id="tfPasswordReg" layoutX="139.0" layoutY="104.0" prefHeight="26.0" prefWidth="200.0" promptText="Password" />
+                <TextField fx:id="tfEmailReg" layoutX="139.0" layoutY="141.0" prefHeight="26.0" prefWidth="200.0" promptText="E-mal" />
+                <Button fx:id="buttonRegistratiReg" defaultButton="true" layoutX="137.0" layoutY="216.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#buttonRegistratiClick" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: #E96151; -fx-text-fill: #000000;" text="REGISTRATI" />
+                <Label fx:id="labelErrorReg" alignment="CENTER" layoutX="85.0" layoutY="181.0" prefHeight="18.0" prefWidth="230.0" />
+            <Label layoutX="62.0" layoutY="72.0" text="Username" />
+            <Label layoutX="67.0" layoutY="109.0" text="Password" />
+            <Label layoutX="88.0" layoutY="146.0" text="E-mail" />
             </children>
         </AnchorPane>
     </center>

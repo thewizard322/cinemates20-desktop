@@ -10,12 +10,18 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import sample.DAO.UtenteDAO;
 import sample.Model.Utente;
 import sample.View.Main;
 
+import java.io.File;
 import java.io.IOException;
 
 public class RegistrazioneController {
@@ -36,7 +42,20 @@ public class RegistrazioneController {
     Button buttonIndietroReg;
 
     @FXML
+    Circle circleButtonIndietroReg;
+
+    @FXML
     Label labelErrorReg;
+
+    @FXML
+    public void initialize(){
+        Image image = new Image(getClass().getResourceAsStream("/images/frecciaindietro.png"));
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(40);
+        imageView.setFitWidth(40);
+        imageView.setPreserveRatio(true);
+        buttonIndietroReg.setGraphic(imageView);
+    }
 
     public void buttonRegistratiClick(){
         String username = tfUsernameReg.getText();
