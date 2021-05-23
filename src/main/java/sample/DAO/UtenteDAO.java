@@ -34,6 +34,7 @@ public class UtenteDAO {
             if(check != 0)
                 return false;
         } catch (Throwable e) {
+            System.out.println("IMPOSSIBILE REGISTRARE UTENTE");
             return false;
         }
         return true;
