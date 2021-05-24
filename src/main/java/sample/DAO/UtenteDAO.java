@@ -10,6 +10,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import sample.Model.Utente;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -114,6 +115,30 @@ public class UtenteDAO {
             return false;
         }
         return true;
+    }
+
+    public Utente prelevaUtente(String username){
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("username", username));
+        HttpClient client = new DefaultHttpClient();
+        HttpPost httpPost = new HttpPost(url+"/prelevaUtente.php");
+        Utente utente;
+        try {
+            httpPost.setEntity(new UrlEncodedFormEntity(params));
+            HttpResponse response = client.execute(httpPost);
+            String responseString = EntityUtils.toString(response.getEntity());
+            JSONArray jsonArray = new JSONArray(responseString);
+            int n = jsonArray.length();
+            String email = null;
+            for (int i = 0; i < n; i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                email = jsonObject.getString("email");
+            }
+            utente = new Utente(username,email);
+        } catch (Throwable e) {
+            return null;
+        }
+        return utente;
     }
 
 }

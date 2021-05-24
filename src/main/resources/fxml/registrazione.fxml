@@ -11,7 +11,7 @@
     <center>
         <AnchorPane prefHeight="300.0" prefWidth="400.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="buttonIndietroReg" layoutX="8.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#buttonIndietroRegClick" prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 100; -fx-background-color: CYAN;" />
+                <Button fx:id="buttonIndietroReg" layoutX="8.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#buttonIndietroRegClick" prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 100; -fx-background-color: RED;" />
                 <TextField fx:id="tfUsernameReg" layoutX="139.0" layoutY="67.0" prefHeight="26.0" prefWidth="200.0" promptText="Username" />
                 <PasswordField fx:id="tfPasswordReg" layoutX="139.0" layoutY="104.0" prefHeight="26.0" prefWidth="200.0" promptText="Password" />
                 <TextField fx:id="tfEmailReg" layoutX="139.0" layoutY="141.0" prefHeight="26.0" prefWidth="200.0" promptText="E-mal" />

@@ -18,10 +18,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import sample.DAO.UtenteDAO;
-import sample.Model.Utente;
 import sample.View.Main;
 
-import java.io.File;
 import java.io.IOException;
 
 public class RegistrazioneController {
@@ -40,9 +38,6 @@ public class RegistrazioneController {
 
     @FXML
     Button buttonIndietroReg;
-
-    @FXML
-    Circle circleButtonIndietroReg;
 
     @FXML
     Label labelErrorReg;

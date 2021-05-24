@@ -4,16 +4,20 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import sample.DAO.UtenteDAO;
+import sample.Model.Utente;
 import sample.View.Main;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class LoginController {
@@ -68,15 +72,43 @@ public class LoginController {
         stage.show();
     }
 
+    private void mostraSchermataPrincipale(){
+        Stage stage = Main.getPrimaryStage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass()
+                    .getResource("/fxml/menu.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.setScene(new Scene(root, 800, 600));
+        stage.setResizable(false);
+        stage.show();
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX((screenBounds.getWidth()-stage.getWidth())/2);
+        stage.setY((screenBounds.getHeight()-stage.getHeight())/2);
+    }
+
     private void loginResult(boolean login){
         if(login == false) {
             labelErrorLogin.setText("Username e/o Password errati");
             labelErrorLogin.setTextFill(Color.RED);
         }
         else {
-            //impostare utente loggato in Utente!!
-            labelErrorLogin.setText("DATI CORRETTI");
-            labelErrorLogin.setTextFill(Color.GREEN);
+            new Thread(){
+                public void run(){
+                    UtenteDAO utenteDAO = new UtenteDAO();
+                    String username = tfUsernameLogin.getText();
+                    Utente utenteLoggato = utenteDAO.prelevaUtente(username);
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            Utente.setUtenteLoggato(utenteLoggato);
+                            mostraSchermataPrincipale();
+                        }
+                    });
+                }
+            }.start();
         }
     }
 
