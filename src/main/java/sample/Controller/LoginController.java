@@ -17,7 +17,6 @@ import sample.DAO.UtenteDAO;
 import sample.Model.Utente;
 import sample.View.Main;
 
-import java.awt.*;
 import java.io.IOException;
 
 public class LoginController {
