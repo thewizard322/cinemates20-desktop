@@ -43,7 +43,7 @@ public class MenuController {
     public void buttonStatisticheClick() {
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/fxml/statistiche.fxml"));
         } catch (IOException e) {
         }
         rootPane.setCenter(null);

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.StatisticheController">
+   <children>
+      <BarChart fx:id="barChartStatistiche" barGap="6.0" layoutX="75.0" layoutY="56.0" prefHeight="266.0" prefWidth="500.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <Label layoutX="113.0" layoutY="375.0" text="Film più apprezzato:">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Label>
+      <Label fx:id="labelFilmPiuApprezzato" layoutX="285.0" layoutY="375.0" text="Label" />
+      <Label layoutX="113.0" layoutY="400.0" text="Film più in hype:">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Label>
+      <Label fx:id="labelFilmPiuInHype" layoutX="285.0" layoutY="400.0" text="Label" />
+      <Label layoutX="255.0" layoutY="26.0" text="STATISTICHE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

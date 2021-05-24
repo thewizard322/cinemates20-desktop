@@ -79,7 +79,6 @@ public class RegistrazioneController {
                 UtenteDAO utenteDAO = new UtenteDAO();
                 final boolean checkUsername = utenteDAO.checkUser(username);
                 final boolean checkEmail = utenteDAO.checkEmail(email);
-                //final boolean utenteRegistrato = ;
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
