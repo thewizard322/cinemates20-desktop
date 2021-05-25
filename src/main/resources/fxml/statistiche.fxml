@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.StatisticheController">
    <children>
-      <BarChart fx:id="barChartStatistiche" barGap="6.0" layoutX="75.0" layoutY="56.0" prefHeight="266.0" prefWidth="500.0">
+      <BarChart fx:id="barChartStatistiche" barGap="6.0" layoutX="19.0" layoutY="22.0" prefHeight="453.0" prefWidth="612.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -17,20 +17,15 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </BarChart>
-      <Label layoutX="113.0" layoutY="375.0" text="Film più apprezzato:">
+      <Label layoutX="47.0" layoutY="495.0" text="Film più apprezzato:">
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Label>
-      <Label fx:id="labelFilmPiuApprezzato" layoutX="285.0" layoutY="375.0" text="Label" />
-      <Label layoutX="113.0" layoutY="400.0" text="Film più in hype:">
+      <Label fx:id="labelFilmPiuApprezzato" layoutX="219.0" layoutY="495.0" prefHeight="16.0" prefWidth="414.0" text="Label" />
+      <Label layoutX="47.0" layoutY="520.0" text="Film più in hype:">
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Label>
-      <Label fx:id="labelFilmPiuInHype" layoutX="285.0" layoutY="400.0" text="Label" />
-      <Label layoutX="255.0" layoutY="26.0" text="STATISTICHE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
+      <Label fx:id="labelFilmPiuInHype" layoutX="219.0" layoutY="520.0" prefHeight="16.0" prefWidth="414.0" text="Label" />
    </children>
 </AnchorPane>

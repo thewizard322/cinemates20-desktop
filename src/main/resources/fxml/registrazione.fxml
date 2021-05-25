@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.RegistrazioneController">
     <center>
@@ -14,8 +15,11 @@
                 <Button fx:id="buttonIndietroReg" layoutX="8.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#buttonIndietroRegClick" prefHeight="40.0" prefWidth="40.0" style="-fx-background-radius: 100; -fx-background-color: RED;" />
                 <TextField fx:id="tfUsernameReg" layoutX="139.0" layoutY="67.0" prefHeight="26.0" prefWidth="200.0" promptText="Username" />
                 <PasswordField fx:id="tfPasswordReg" layoutX="139.0" layoutY="104.0" prefHeight="26.0" prefWidth="200.0" promptText="Password" />
-                <TextField fx:id="tfEmailReg" layoutX="139.0" layoutY="141.0" prefHeight="26.0" prefWidth="200.0" promptText="E-mal" />
-                <Button fx:id="buttonRegistratiReg" defaultButton="true" layoutX="137.0" layoutY="216.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#buttonRegistratiClick" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: #E96151; -fx-text-fill: #000000;" text="REGISTRATI" />
+                <TextField fx:id="tfEmailReg" layoutX="139.0" layoutY="141.0" prefHeight="26.0" prefWidth="200.0" promptText="E-mail" />
+                <Button fx:id="buttonRegistratiReg" defaultButton="true" layoutX="137.0" layoutY="216.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#buttonRegistratiClick" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: #E96151;" text="REGISTRATI">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Button>
                 <Label fx:id="labelErrorReg" alignment="CENTER" layoutX="85.0" layoutY="181.0" prefHeight="18.0" prefWidth="230.0" />
             <Label layoutX="62.0" layoutY="72.0" text="Username" />
             <Label layoutX="67.0" layoutY="109.0" text="Password" />
