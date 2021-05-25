@@ -2,7 +2,6 @@ package sample.DAO;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
@@ -44,11 +43,13 @@ public class StatisticaDAO {
             HttpResponse response = client.execute(httpPost);
             String responseString = EntityUtils.toString(response.getEntity());
             JSONObject jsonObject = new JSONObject(responseString);
-            list.add(new Statistica("film piu apprezzato",jsonObject.getString("film piu apprezzato")));
-            list.add(new Statistica("film meno visto",jsonObject.getString("film meno visto")));
+            if(!jsonObject.isNull("film piu apprezzato"))
+                list.add(new Statistica("film piu apprezzato",jsonObject.getString("film piu apprezzato")));
+            if(!jsonObject.isNull("film meno visto"))
+                list.add(new Statistica("film meno visto",jsonObject.getString("film meno visto")));
         } catch (Throwable e) {
             e.printStackTrace();
-            System.out.println("IMPOSSIBILE PRELEVARE STATISTICHE");
+            System.out.println("IMPOSSIBILE PRELEVARE STATISTICHE STRINGHE");
             return null;
         }
         return list;

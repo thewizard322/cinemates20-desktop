@@ -27,7 +27,7 @@ public class UtenteDAO {
         HttpClient client = new DefaultHttpClient();
         HttpPost httpPost = new HttpPost(url+"/registrazioneAmministratore.php");
         try {
-            httpPost.setEntity(new UrlEncodedFormEntity(params));
+            httpPost.setEntity(new UrlEncodedFormEntity(params,"UTF-8"));
             HttpResponse response = client.execute(httpPost);
             String responseString = EntityUtils.toString(response.getEntity());
             JSONObject jsonObject = new JSONObject(responseString);
@@ -48,7 +48,7 @@ public class UtenteDAO {
         HttpClient client = new DefaultHttpClient();
         HttpPost httpPost = new HttpPost(url+"/loginAmministratore.php");
         try {
-            httpPost.setEntity(new UrlEncodedFormEntity(params));
+            httpPost.setEntity(new UrlEncodedFormEntity(params,"UTF-8"));
             HttpResponse response = client.execute(httpPost);
             String responseString = EntityUtils.toString(response.getEntity());
             JSONArray jsonArray = new JSONArray(responseString);
@@ -73,7 +73,7 @@ public class UtenteDAO {
         HttpClient client = new DefaultHttpClient();
         HttpPost httpPost = new HttpPost(url+"/checkUser.php");
         try {
-            httpPost.setEntity(new UrlEncodedFormEntity(params));
+            httpPost.setEntity(new UrlEncodedFormEntity(params,"UTF-8"));
             HttpResponse response = client.execute(httpPost);
             String responseString = EntityUtils.toString(response.getEntity());
             JSONArray jsonArray = new JSONArray(responseString);
@@ -98,7 +98,7 @@ public class UtenteDAO {
         HttpClient client = new DefaultHttpClient();
         HttpPost httpPost = new HttpPost(url+"/checkEmail.php");
         try {
-            httpPost.setEntity(new UrlEncodedFormEntity(params));
+            httpPost.setEntity(new UrlEncodedFormEntity(params,"UTF-8"));
             HttpResponse response = client.execute(httpPost);
             String responseString = EntityUtils.toString(response.getEntity());
             JSONArray jsonArray = new JSONArray(responseString);
@@ -124,7 +124,7 @@ public class UtenteDAO {
         HttpPost httpPost = new HttpPost(url+"/prelevaUtente.php");
         Utente utente;
         try {
-            httpPost.setEntity(new UrlEncodedFormEntity(params));
+            httpPost.setEntity(new UrlEncodedFormEntity(params,"UTF-8"));
             HttpResponse response = client.execute(httpPost);
             String responseString = EntityUtils.toString(response.getEntity());
             JSONArray jsonArray = new JSONArray(responseString);
