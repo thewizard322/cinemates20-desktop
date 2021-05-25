@@ -55,7 +55,7 @@ public class MenuController {
     public void buttonSegnalazioniClick() {
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("/fxml/registrazione.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/fxml/gestionesegnalazioni.fxml"));
         } catch (IOException e) {
         }
         rootPane.setCenter(null);
