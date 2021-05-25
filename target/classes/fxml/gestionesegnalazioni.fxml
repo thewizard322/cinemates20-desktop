@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.GestioneSegnalazioniController">
+   <children>
+      <TableView fx:id="tableViewSegnalazioni" layoutX="19.0" layoutY="30.0" prefHeight="236.0" prefWidth="612.0">
+        <columns>
+          <TableColumn prefWidth="119.0" text="ID Recensione" />
+          <TableColumn prefWidth="69.0" text="ID Film" />
+            <TableColumn prefWidth="202.0" text="Testo" />
+            <TableColumn prefWidth="101.0" text="Autore" />
+            <TableColumn prefWidth="120.0" text="N° Segnalazioni" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
