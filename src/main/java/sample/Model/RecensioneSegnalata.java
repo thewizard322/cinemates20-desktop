@@ -5,11 +5,11 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class RecensioneSegnalata {
 
-    private SimpleStringProperty idRecensione;
-    private SimpleStringProperty idFilm;
-    private SimpleStringProperty testo;
-    private SimpleStringProperty autore;
-    private SimpleIntegerProperty numeroSegnalazioni;
+    private final SimpleStringProperty idRecensione;
+    private final SimpleStringProperty idFilm;
+    private final SimpleStringProperty testo;
+    private final SimpleStringProperty autore;
+    private final SimpleIntegerProperty numeroSegnalazioni;
 
     public RecensioneSegnalata(String idRecensione, String idFilm, String testo, String autore, Integer numeroSegnalazioni){
         this.idRecensione = new SimpleStringProperty(idRecensione);
@@ -17,26 +17,6 @@ public class RecensioneSegnalata {
         this.testo = new SimpleStringProperty(testo);
         this.autore = new SimpleStringProperty(autore);
         this.numeroSegnalazioni = new SimpleIntegerProperty(numeroSegnalazioni);
-    }
-
-    public SimpleStringProperty idRecensioneProperty() {
-        return idRecensione;
-    }
-
-    public SimpleStringProperty idFilmProperty() {
-        return idFilm;
-    }
-
-    public SimpleStringProperty testoProperty() {
-        return testo;
-    }
-
-    public SimpleStringProperty autoreProperty() {
-        return autore;
-    }
-
-    public SimpleIntegerProperty numeroSegnalazioniProperty() {
-        return numeroSegnalazioni;
     }
 
     public String getIdRecensione(){
