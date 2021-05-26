@@ -55,32 +55,8 @@ public class GestioneSegnalazioniController {
     @FXML
     public void initialize(){
         nascondiParteGestione();
-        tableColumnIdRecensione.setCellValueFactory(
-                new PropertyValueFactory<RecensioneSegnalata,String>("idRecensione")
-        );
-        tableColumnIdFilm.setCellValueFactory(
-                new PropertyValueFactory<RecensioneSegnalata,String>("idFilm")
-        );
-        tableColumnTesto.setCellValueFactory(
-                new PropertyValueFactory<RecensioneSegnalata,String>("testo")
-        );
-        tableColumnAutore.setCellValueFactory(
-                new PropertyValueFactory<RecensioneSegnalata,String>("autore")
-        );
-        tableColumnNumeroSegnalazioni.setCellValueFactory(
-                new PropertyValueFactory<RecensioneSegnalata,Integer>("numeroSegnalazioni")
-        );
-        tableViewSegnalazioni.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                if(mouseEvent.isPrimaryButtonDown() && mouseEvent.getClickCount() == 2)
-                    if(tableViewSegnalazioni.getSelectionModel().getSelectedItem()!=null){
-                        recensioneCliccata = tableViewSegnalazioni.getSelectionModel().getSelectedItem();
-                        riempiCampiGestione(recensioneCliccata);
-                        mostraParteGestione();
-                    }
-            }
-        });
+        setCellValueFactory();
+        setDoppioClickRigaTabella();
         prelevaSegnalazioni();
     }
 
@@ -179,6 +155,7 @@ public class GestioneSegnalazioniController {
     }
 
     private void prelevaSegnalazioni(){
+        observableListSegnalazioni.clear();
         new Thread(){
             public void run(){
                 RecensioneSegnalataDAO recensioneSegnalataDAO = new RecensioneSegnalataDAO();
@@ -270,6 +247,38 @@ public class GestioneSegnalazioniController {
         alert.setTitle("");
         alert.setHeaderText("");
         alert.show();
+    }
+
+    private void setCellValueFactory(){
+        tableColumnIdRecensione.setCellValueFactory(
+                new PropertyValueFactory<RecensioneSegnalata,String>("idRecensione")
+        );
+        tableColumnIdFilm.setCellValueFactory(
+                new PropertyValueFactory<RecensioneSegnalata,String>("idFilm")
+        );
+        tableColumnTesto.setCellValueFactory(
+                new PropertyValueFactory<RecensioneSegnalata,String>("testo")
+        );
+        tableColumnAutore.setCellValueFactory(
+                new PropertyValueFactory<RecensioneSegnalata,String>("autore")
+        );
+        tableColumnNumeroSegnalazioni.setCellValueFactory(
+                new PropertyValueFactory<RecensioneSegnalata,Integer>("numeroSegnalazioni")
+        );
+    }
+
+    private void setDoppioClickRigaTabella(){
+        tableViewSegnalazioni.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                if(mouseEvent.isPrimaryButtonDown() && mouseEvent.getClickCount() == 2)
+                    if(tableViewSegnalazioni.getSelectionModel().getSelectedItem()!=null){
+                        recensioneCliccata = tableViewSegnalazioni.getSelectionModel().getSelectedItem();
+                        riempiCampiGestione(recensioneCliccata);
+                        mostraParteGestione();
+                    }
+            }
+        });
     }
 
 }

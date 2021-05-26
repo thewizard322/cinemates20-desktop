@@ -32,6 +32,11 @@ public class StatisticheController {
 
     @FXML
     public void initialize(){
+        prelevaStatistiche();
+        prelevaStatisticheStringhe();
+    }
+
+    private void prelevaStatistiche(){
         new Thread(){
             public void run(){
                 StatisticaDAO statisticaDAO = new StatisticaDAO();
@@ -44,6 +49,9 @@ public class StatisticheController {
                 });
             }
         }.start();
+    }
+
+    private void prelevaStatisticheStringhe(){
         new Thread(){
             public void run(){
                 StatisticaDAO statisticaDAO = new StatisticaDAO();
@@ -68,6 +76,7 @@ public class StatisticheController {
     }
 
     private void inizializzaBarChart(List<Statistica> statisticaList){
+        barChartStatistiche.getXAxis().setTickLabelRotation(-45);
         XYChart.Series<String,Integer> series = new XYChart.Series<String,Integer>();
         for(Statistica statistica : statisticaList) {
             XYChart.Data<String,Integer> data = new XYChart.Data<String, Integer>(statistica.getNome(), statistica.getValore());

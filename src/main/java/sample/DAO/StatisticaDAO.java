@@ -25,9 +25,12 @@ public class StatisticaDAO {
             String responseString = EntityUtils.toString(response.getEntity());
             JSONObject jsonObject = new JSONObject(responseString);
             list.add(new Statistica("n° utenti",jsonObject.getInt("numero utenti")));
+            list.add(new Statistica("n° amministratori",jsonObject.getInt("numero amministratori")));
             list.add(new Statistica("n° recensioni",jsonObject.getInt("numero recensioni")));
             list.add(new Statistica("n° segnalazioni",jsonObject.getInt("numero segnalazioni")));
-            list.add(new Statistica("n° liste",jsonObject.getInt("numero liste")));
+            list.add(new Statistica("n° liste personalizzate",jsonObject.getInt("numero liste")));
+            list.add(new Statistica("n° film apprezzati",jsonObject.getInt("numero film apprezzati")));
+            list.add(new Statistica("n° film in hype",jsonObject.getInt("numero film in hype")));
         } catch (Throwable e) {
             System.out.println("IMPOSSIBILE PRELEVARE STATISTICHE");
             return null;
