@@ -38,6 +38,12 @@ public class MenuController {
         buttonLogoutMenu.setFocusTraversable(false);
         buttonStatisticheMenu.setFocusTraversable(false);
         buttonSegnalazioniMenu.setFocusTraversable(false);
+        Image image = new Image(getClass().getResourceAsStream("/images/logout.png"));
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(40);
+        imageView.setFitWidth(40);
+        imageView.setPreserveRatio(true);
+        buttonLogoutMenu.setGraphic(imageView);
     }
 
     public void buttonStatisticheClick() {

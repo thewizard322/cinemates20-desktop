@@ -22,7 +22,7 @@
                <font>
                   <Font name="System Bold" size="10.0" />
                </font></Label>
-            <JFXButton fx:id="buttonLogoutMenu" layoutX="34.0" layoutY="435.0" onAction="#buttonLogoutClick" prefHeight="40.0" prefWidth="83.0" style="-fx-background-color: grey;" text="Logout" />
+            <JFXButton fx:id="buttonLogoutMenu" layoutX="55.0" layoutY="435.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#buttonLogoutClick" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: transparent;" />
          </children>
       </AnchorPane>
    </left>
