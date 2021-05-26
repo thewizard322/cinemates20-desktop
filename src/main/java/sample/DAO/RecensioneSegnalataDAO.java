@@ -1,14 +1,18 @@
 package sample.DAO;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import sample.Model.RecensioneSegnalata;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -39,6 +43,69 @@ public class RecensioneSegnalataDAO {
              return null;
          }
          return list;
+     }
+
+     public boolean inviaNotificaEsitoDecisioneAmministratore(String usernameMittente
+             , String usernameDestinatario, String tipo){
+         List<NameValuePair> params = new ArrayList<NameValuePair>();
+         params.add(new BasicNameValuePair("username_mittente", usernameMittente));
+         params.add(new BasicNameValuePair("username_destinatario", usernameDestinatario));
+         params.add(new BasicNameValuePair("tipo", tipo));
+         HttpClient client = new DefaultHttpClient();
+         HttpPost httpPost = new HttpPost(url+"/inviaNotificaEsitoDecisioneAmministratore.php");
+         try {
+             httpPost.setEntity(new UrlEncodedFormEntity(params,"UTF-8"));
+             HttpResponse response = client.execute(httpPost);
+             String responseString = EntityUtils.toString(response.getEntity());
+             JSONObject jsonObject = new JSONObject(responseString);
+             int check = jsonObject.getInt("response");
+             if(check != 0)
+                 return false;
+         } catch (Throwable e) {
+             e.printStackTrace();
+             return false;
+         }
+         return true;
+     }
+
+     public boolean eliminaRecensione(String idRecensione){
+         List<NameValuePair> params = new ArrayList<NameValuePair>();
+         params.add(new BasicNameValuePair("id_recensione", idRecensione));
+         HttpClient client = new DefaultHttpClient();
+         HttpPost httpPost = new HttpPost(url+"/eliminaRecensione.php");
+         try {
+             httpPost.setEntity(new UrlEncodedFormEntity(params,"UTF-8"));
+             HttpResponse response = client.execute(httpPost);
+             String responseString = EntityUtils.toString(response.getEntity());
+             JSONObject jsonObject = new JSONObject(responseString);
+             int check = jsonObject.getInt("response");
+             if(check != 0)
+                 return false;
+         } catch (Throwable e) {
+             e.printStackTrace();
+             return false;
+         }
+         return true;
+     }
+
+     public boolean eliminaSegnalazioniRecensione(String idRecensione){
+         List<NameValuePair> params = new ArrayList<NameValuePair>();
+         params.add(new BasicNameValuePair("id_recensione", idRecensione));
+         HttpClient client = new DefaultHttpClient();
+         HttpPost httpPost = new HttpPost(url+"/eliminaSegnalazioniRecensione.php");
+         try {
+             httpPost.setEntity(new UrlEncodedFormEntity(params,"UTF-8"));
+             HttpResponse response = client.execute(httpPost);
+             String responseString = EntityUtils.toString(response.getEntity());
+             JSONObject jsonObject = new JSONObject(responseString);
+             int check = jsonObject.getInt("response");
+             if(check != 0)
+                 return false;
+         } catch (Throwable e) {
+             e.printStackTrace();
+             return false;
+         }
+         return true;
      }
 
 }

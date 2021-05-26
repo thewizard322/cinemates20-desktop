@@ -13,6 +13,7 @@ import org.json.JSONObject;
 import sample.Model.Utente;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class UtenteDAO {
@@ -139,6 +140,29 @@ public class UtenteDAO {
             return null;
         }
         return utente;
+    }
+
+    public List<String> prelevaUsernameSegnalatori(String idRecensione){
+        List<String> usernameList = new LinkedList<>();
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("id_recensione", idRecensione));
+        HttpClient client = new DefaultHttpClient();
+        HttpPost httpPost = new HttpPost(url+"/prelevaUsernameSegnalatori.php");
+        try {
+            httpPost.setEntity(new UrlEncodedFormEntity(params,"UTF-8"));
+            HttpResponse response = client.execute(httpPost);
+            String responseString = EntityUtils.toString(response.getEntity());
+            JSONArray jsonArray = new JSONArray(responseString);
+            int n = jsonArray.length();
+            for (int i = 0; i < n; i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String username = jsonObject.getString("username");
+                usernameList.add(username);
+            }
+        } catch (Throwable e) {
+            return null;
+        }
+        return usernameList;
     }
 
 }
