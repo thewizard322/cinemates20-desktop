@@ -17,7 +17,6 @@ import javafx.util.Duration;
 import sample.DAO.StatisticaDAO;
 import sample.Model.Statistica;
 
-import java.text.DecimalFormat;
 import java.util.List;
 
 public class StatisticheController {
