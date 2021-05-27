@@ -104,14 +104,14 @@ public class RegistrazioneController {
                     labelErrorReg.setTextFill(Color.RED);
                 }
                 else{
-                    mostraAlertRegistrazione();
+                    mostraAlertRegistrazioneSuccesso();
                     mostraLoginScene();
                 }
             }
         });
     }
 
-    private void mostraAlertRegistrazione(){
+    private void mostraAlertRegistrazioneSuccesso(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION,"Registrazione avvenuta con successo");
         alert.setTitle("Registrazione");
         alert.setHeaderText("");
