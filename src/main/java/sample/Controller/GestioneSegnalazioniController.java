@@ -74,10 +74,8 @@ public class GestioneSegnalazioniController {
                 UtenteDAO utenteDAO = new UtenteDAO();
                 List<String> listSegnalatori =
                         utenteDAO.prelevaUsernameSegnalatori(recensioneCliccata.getIdRecensione());
-
+                RecensioneSegnalataDAO recensioneSegnalataDAO = new RecensioneSegnalataDAO();
                 if(listSegnalatori!=null || !listSegnalatori.isEmpty()){
-
-                    RecensioneSegnalataDAO recensioneSegnalataDAO = new RecensioneSegnalataDAO();
                     String usernameMittente = Utente.getUtenteLoggato().getUsername();
                     for(String usernameDestinatario : listSegnalatori) {
                         recensioneSegnalataDAO.inviaNotificaEsitoDecisioneAmministratore(
@@ -85,16 +83,13 @@ public class GestioneSegnalazioniController {
                     }
                     recensioneSegnalataDAO.inviaNotificaEsitoDecisioneAmministratore(
                             usernameMittente,recensioneCliccata.getAutore(),"ARSP");
-                    boolean checkSegnalazioniRimosse =
-                            recensioneSegnalataDAO.eliminaSegnalazioniRecensione(recensioneCliccata.getIdRecensione());
-                    if(checkSegnalazioniRimosse)
-                        runApprovazioneSuccesso();
-                    else
-                        runAlertOperazioneFallita();
                 }
-                else{
+                boolean checkSegnalazioniRimosse =
+                        recensioneSegnalataDAO.eliminaSegnalazioniRecensione(recensioneCliccata.getIdRecensione());
+                if(checkSegnalazioniRimosse)
+                    runApprovazioneSuccesso();
+                else
                     runAlertOperazioneFallita();
-                }
             }
         }.start();
     }
@@ -105,9 +100,8 @@ public class GestioneSegnalazioniController {
                 UtenteDAO utenteDAO = new UtenteDAO();
                 List<String> listSegnalatori =
                         utenteDAO.prelevaUsernameSegnalatori(recensioneCliccata.getIdRecensione());
-
+                RecensioneSegnalataDAO recensioneSegnalataDAO = new RecensioneSegnalataDAO();
                 if(listSegnalatori!=null || !listSegnalatori.isEmpty()){
-                    RecensioneSegnalataDAO recensioneSegnalataDAO = new RecensioneSegnalataDAO();
                     String usernameMittente = Utente.getUtenteLoggato().getUsername();
                     for(String usernameDestinatario : listSegnalatori) {
                         recensioneSegnalataDAO.inviaNotificaEsitoDecisioneAmministratore(
@@ -115,12 +109,10 @@ public class GestioneSegnalazioniController {
                     }
                     recensioneSegnalataDAO.inviaNotificaEsitoDecisioneAmministratore(
                             usernameMittente,recensioneCliccata.getAutore(),"AASP");
-                    boolean checkRimozione = recensioneSegnalataDAO.eliminaRecensione(recensioneCliccata.getIdRecensione());
-                    if(checkRimozione)
-                        runRimozioneSuccesso();
-                    else
-                        runAlertOperazioneFallita();
                 }
+                boolean checkRimozione = recensioneSegnalataDAO.eliminaRecensione(recensioneCliccata.getIdRecensione());
+                if(checkRimozione)
+                    runRimozioneSuccesso();
                 else
                     runAlertOperazioneFallita();
             }
