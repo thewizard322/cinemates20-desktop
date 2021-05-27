@@ -54,8 +54,8 @@ public class RegistrazioneController {
         String password = tfPasswordReg.getText();
         String email = tfEmailReg.getText();
         boolean campiNonVuoti = campiNonVuoti(username,password,email);
-        if(campiNonVuoti==true){
-            verificaUsernameEdEmail(username,password,email);
+        if(campiNonVuoti){
+            registraUtente(username,password,email);
         }
         else{
             labelErrorReg.setText("Compilare tutti i campi");
@@ -73,51 +73,42 @@ public class RegistrazioneController {
         return true;
     }
 
-    private void verificaUsernameEdEmail(String username, String password, String email){
-        new Thread(){
-            public void run(){
-                UtenteDAO utenteDAO = new UtenteDAO();
-                final boolean checkUsername = utenteDAO.checkUser(username);
-                final boolean checkEmail = utenteDAO.checkEmail(email);
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        if(checkUsername == false) {
-                            labelErrorReg.setText("Username già utilizzato");
-                            labelErrorReg.setTextFill(Color.RED);
-                        }
-                        else if (checkEmail == false){
-                            labelErrorReg.setText("Email già utilizzata");
-                            labelErrorReg.setTextFill(Color.RED);
-                        }
-                        else
-                            registraUtente(username,password,email);
-                    }
-                });
-            }
-        }.start();
-    }
-
     private void registraUtente(String username, String password, String email){
         new Thread(){
             public void run(){
                 UtenteDAO utenteDAO = new UtenteDAO();
-                boolean checkRegistrazione = utenteDAO.registraAmministratore(username,password,email);
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        if(!checkRegistrazione){
-                            labelErrorReg.setText("Impossibile registrare l'utente");
-                            labelErrorReg.setTextFill(Color.RED);
-                        }
-                        else{
-                            mostraAlertRegistrazione();
-                            mostraLoginScene();
-                        }
-                    }
-                });
+                boolean checkUsername = utenteDAO.checkUser(username);
+                boolean checkEmail = utenteDAO.checkEmail(email);
+                boolean checkRegistrazione = false;
+                if(checkUsername && checkEmail)
+                    checkRegistrazione = utenteDAO.registraAmministratore(username,password,email);
+                verificaRegistrazioneAvvenuta(checkUsername,checkEmail,checkRegistrazione);
             }
         }.start();
+    }
+
+    private void verificaRegistrazioneAvvenuta(boolean checkUsername, boolean checkEmail, boolean checkRegistrazione){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                if(!checkUsername) {
+                    labelErrorReg.setText("Username già utilizzato");
+                    labelErrorReg.setTextFill(Color.RED);
+                }
+                else if (!checkEmail){
+                    labelErrorReg.setText("Email già utilizzata");
+                    labelErrorReg.setTextFill(Color.RED);
+                }
+                else if(!checkRegistrazione){
+                    labelErrorReg.setText("Impossibile registrare l'utente");
+                    labelErrorReg.setTextFill(Color.RED);
+                }
+                else{
+                    mostraAlertRegistrazione();
+                    mostraLoginScene();
+                }
+            }
+        });
     }
 
     private void mostraAlertRegistrazione(){

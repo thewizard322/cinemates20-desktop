@@ -76,6 +76,7 @@ public class GestioneSegnalazioniController {
                         utenteDAO.prelevaUsernameSegnalatori(recensioneCliccata.getIdRecensione());
 
                 if(listSegnalatori!=null || !listSegnalatori.isEmpty()){
+
                     RecensioneSegnalataDAO recensioneSegnalataDAO = new RecensioneSegnalataDAO();
                     String usernameMittente = Utente.getUtenteLoggato().getUsername();
                     for(String usernameDestinatario : listSegnalatori) {
@@ -87,21 +88,12 @@ public class GestioneSegnalazioniController {
                     boolean checkSegnalazioniRimosse =
                             recensioneSegnalataDAO.eliminaSegnalazioniRecensione(recensioneCliccata.getIdRecensione());
                     if(checkSegnalazioniRimosse)
-                        Platform.runLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                mostraAlertRecensioneApprovata();
-                                nascondiParteGestione();
-                                rimuoviRecensioneDaTabella();
-                            }
-                        });
+                        runApprovazioneSuccesso();
                     else
-                        Platform.runLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                mostraAlertOperazioneFallita();
-                            }
-                        });
+                        runAlertOperazioneFallita();
+                }
+                else{
+                    runAlertOperazioneFallita();
                 }
             }
         }.start();
@@ -125,24 +117,45 @@ public class GestioneSegnalazioniController {
                             usernameMittente,recensioneCliccata.getAutore(),"AASP");
                     boolean checkRimozione = recensioneSegnalataDAO.eliminaRecensione(recensioneCliccata.getIdRecensione());
                     if(checkRimozione)
-                        Platform.runLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                mostraAlertRecensioneRimossa();
-                                nascondiParteGestione();
-                                rimuoviRecensioneDaTabella();
-                            }
-                        });
+                        runRimozioneSuccesso();
                     else
-                        Platform.runLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                mostraAlertOperazioneFallita();
-                            }
-                        });
+                        runAlertOperazioneFallita();
                 }
+                else
+                    runAlertOperazioneFallita();
             }
         }.start();
+    }
+
+    private void runAlertOperazioneFallita(){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                mostraAlertOperazioneFallita();
+            }
+        });
+    }
+
+    private void runApprovazioneSuccesso(){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                mostraAlertRecensioneApprovata();
+                nascondiParteGestione();
+                rimuoviRecensioneDaTabella();
+            }
+        });
+    }
+
+    private void runRimozioneSuccesso(){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                mostraAlertRecensioneRimossa();
+                nascondiParteGestione();
+                rimuoviRecensioneDaTabella();
+            }
+        });
     }
 
     private void rimuoviRecensioneDaTabella(){
@@ -155,7 +168,6 @@ public class GestioneSegnalazioniController {
     }
 
     private void prelevaSegnalazioni(){
-        observableListSegnalazioni.clear();
         new Thread(){
             public void run(){
                 RecensioneSegnalataDAO recensioneSegnalataDAO = new RecensioneSegnalataDAO();
