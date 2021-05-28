@@ -69,9 +69,9 @@ public class GestioneSegnalazioniController {
     }
 
     private void approvaRecensione(){
+        disabilitaBottoni();
         new Thread(){
             public void run(){
-                disabilitaBottoni();
                 UtenteDAO utenteDAO = new UtenteDAO();
                 List<String> listSegnalatori =
                         utenteDAO.prelevaUsernameSegnalatori(recensioneCliccata.getIdRecensione());
@@ -97,9 +97,9 @@ public class GestioneSegnalazioniController {
     }
 
     private void rimuoviRecensione(){
+        disabilitaBottoni();
         new Thread(){
             public void run(){
-                disabilitaBottoni();
                 UtenteDAO utenteDAO = new UtenteDAO();
                 List<String> listSegnalatori =
                         utenteDAO.prelevaUsernameSegnalatori(recensioneCliccata.getIdRecensione());
@@ -134,13 +134,8 @@ public class GestioneSegnalazioniController {
     }
 
     private void disabilitaBottoni(){
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                buttonApprova.setDisable(true);
-                buttonRimuovi.setDisable(true);
-            }
-        });
+        buttonApprova.setDisable(true);
+        buttonRimuovi.setDisable(true);
     }
 
     private void runAlertOperazioneFallita(){
