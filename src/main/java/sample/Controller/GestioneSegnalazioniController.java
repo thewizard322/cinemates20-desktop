@@ -71,6 +71,7 @@ public class GestioneSegnalazioniController {
     private void approvaRecensione(){
         new Thread(){
             public void run(){
+                disabilitaBottoni();
                 UtenteDAO utenteDAO = new UtenteDAO();
                 List<String> listSegnalatori =
                         utenteDAO.prelevaUsernameSegnalatori(recensioneCliccata.getIdRecensione());
@@ -90,6 +91,7 @@ public class GestioneSegnalazioniController {
                     runApprovazioneSuccesso();
                 else
                     runAlertOperazioneFallita();
+                abilitaBottoni();
             }
         }.start();
     }
@@ -97,6 +99,7 @@ public class GestioneSegnalazioniController {
     private void rimuoviRecensione(){
         new Thread(){
             public void run(){
+                disabilitaBottoni();
                 UtenteDAO utenteDAO = new UtenteDAO();
                 List<String> listSegnalatori =
                         utenteDAO.prelevaUsernameSegnalatori(recensioneCliccata.getIdRecensione());
@@ -115,8 +118,29 @@ public class GestioneSegnalazioniController {
                     runRimozioneSuccesso();
                 else
                     runAlertOperazioneFallita();
+                abilitaBottoni();
             }
         }.start();
+    }
+
+    private void abilitaBottoni(){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                buttonApprova.setDisable(false);
+                buttonRimuovi.setDisable(false);
+            }
+        });
+    }
+
+    private void disabilitaBottoni(){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                buttonApprova.setDisable(true);
+                buttonRimuovi.setDisable(true);
+            }
+        });
     }
 
     private void runAlertOperazioneFallita(){
@@ -143,6 +167,8 @@ public class GestioneSegnalazioniController {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
+                buttonRimuovi.setDisable(false);
+                buttonApprova.setDisable(false);
                 mostraAlertRecensioneRimossa();
                 nascondiParteGestione();
                 rimuoviRecensioneDaTabella();
