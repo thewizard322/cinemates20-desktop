@@ -1,19 +1,25 @@
 import org.junit.Test;
-import sample.Controller.RegistrazioneController;
 
 import static org.junit.Assert.assertEquals;
 
 public class CampiNonVuotiRegistrazioneControllerTestWhiteBox {
 
-    RegistrazioneController registrazioneController;
+    private boolean campiNonVuoti(String username, String password, String email){
+        if(username.equals(""))
+            return false;
+        else if(password.equals(""))
+            return false;
+        else if(email.equals(""))
+            return false;
+        return true;
+    }
 
     @Test
     public void campiNonVuotiRegistrazioneControllerTestWhiteBox_1_2(){
         String username = "";
         String password = "pass";
         String email = "email";
-        registrazioneController = new RegistrazioneController();
-        assertEquals(false,registrazioneController.campiNonVuoti(username,password,email));
+        assertEquals(false,campiNonVuoti(username,password,email));
     }
 
     @Test
@@ -21,8 +27,7 @@ public class CampiNonVuotiRegistrazioneControllerTestWhiteBox {
         String username = "user";
         String password = "";
         String email = "email";
-        registrazioneController = new RegistrazioneController();
-        assertEquals(false,registrazioneController.campiNonVuoti(username,password,email));
+        assertEquals(false,campiNonVuoti(username,password,email));
     }
 
     @Test
@@ -30,8 +35,7 @@ public class CampiNonVuotiRegistrazioneControllerTestWhiteBox {
         String username = "user";
         String password = "pass";
         String email = "";
-        registrazioneController = new RegistrazioneController();
-        assertEquals(false,registrazioneController.campiNonVuoti(username,password,email));
+        assertEquals(false,campiNonVuoti(username,password,email));
     }
 
     @Test
@@ -39,8 +43,7 @@ public class CampiNonVuotiRegistrazioneControllerTestWhiteBox {
         String username = "user";
         String password = "pass";
         String email = "email";
-        registrazioneController = new RegistrazioneController();
-        assertEquals(true,registrazioneController.campiNonVuoti(username,password,email));
+        assertEquals(true,campiNonVuoti(username,password,email));
     }
 
 }
