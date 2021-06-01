@@ -3,12 +3,14 @@ package sample.Controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import sample.Model.Utente;
 import sample.View.Main;
@@ -87,6 +89,9 @@ public class MenuController {
         stage.setScene(new Scene(root, 400, 300));
         stage.setResizable(false);
         stage.show();
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX((screenBounds.getWidth()-stage.getWidth())/2);
+        stage.setY((screenBounds.getHeight()-stage.getHeight())/2);
     }
 
 }
