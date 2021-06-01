@@ -67,8 +67,12 @@ public class RegistrazioneController {
         mostraLoginScene();
     }
 
-    private boolean campiNonVuoti(String username, String password, String email){
-        if(username.equals("") || password.equals("") || email.equals(""))
+    public boolean campiNonVuoti(String username, String password, String email){
+        if(username.equals(""))
+            return false;
+        else if(password.equals(""))
+            return false;
+        else if(email.equals(""))
             return false;
         return true;
     }
